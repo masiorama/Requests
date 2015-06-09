@@ -228,7 +228,7 @@ class Requests_Transport_cURL implements Requests_Transport {
 		$options['hooks']->dispatch('curl.before_request', array(&$this->fp));
 
 		$headers = Requests::flatten($headers);
-		if (in_array($options['type'], array(Requests::HEAD, Requests::GET, Requests::DELETE)) & !empty($data)) {
+		if (in_array($options['type'], array(Requests::HEAD, Requests::GET, Requests::DELETE)) && !empty($data)) {
 			$url = self::format_get($url, $data);
 		}
 		elseif (!empty($data) && !is_string($data)) {
